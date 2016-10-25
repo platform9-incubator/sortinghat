@@ -1,0 +1,89 @@
+<!-- home.html -->
+<div>
+    <div class="row">
+        <div class="col-xs-4"><h3>Category: {{ category }}</h3></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="input-group">
+          <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+          </span>
+                <input type="text" class="form-control" ng-model="searchText" placeholder="Search for...">
+            </div>
+
+            <!-- /input-group -->
+        </div>
+        <div class="col-xs-6">
+                <label ><input type="radio" ng-model="last_period" ng-value="Date.now()" checked="checked"> all</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="30"> last 30 min</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="60"> last 60 min</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="240"> last 4 hrs</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="480"> last 8 hrs</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="1440"> last 24 hrs</label>
+
+        </div>
+        <!-- /.col-lg-6 -->
+        <div class="col-xs-2">
+            <button class='btn btn-block btn-primary' ng-click="get_category_data(category)"><span
+                    class="glyphicon glyphicon-refresh"></button>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Latest Timestamp</th>
+                <th>Error Message</th>
+                <th># Accounts</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat-start="x in cat_records | filter:searchText | timeFilter:last_period">
+                <td ng-switch=" x.total_count > 5 ? (x.total_count > 10 ? 'red':'orange'):'grey' ">
+                    <span ng-switch-when="red" class="label-as-badge label label-danger">{{ x.total_count }}</span>
+                    <span ng-switch-when="orange"
+                          class="label-as-badge label label-warning">{{ x.total_count }}</span>
+                    <span ng-switch-when="grey" class="label-as-badge label label-default">{{ x.total_count }}</span>
+                </td>
+                <td>{{ x.time_str }}</td>
+                <!-- <td><a href="#" ng-click="isCollapsed = !isCollapsed">{{ x.message | truncate:80 }}</a></td> -->
+                <td ng-switch on="x.severity">
+                    <span title="Warning" ng-switch-when="WARNING" class="glyphicon glyphicon-exclamation-sign"
+                          style="color:orange" aria-hidden="true"></span>
+                    <span title="Info" ng-switch-when="INFO" class="glyphicon glyphicon-info-sign" style="color:blue"
+                          aria-hidden="true"></span>
+                    <span title="Error" ng-switch-when="ERROR" class="glyphicon glyphicon-alert" style="color:red"
+                          aria-hidden="true"></span>
+                    <span title="Unknown" ng-switch-default class="glyphicon glyphicon-info-sign" style="color:#777"
+                          aria-hidden="true"></span>
+                    <span>&nbsp;</span>
+                    <a ng-click="isCollapsed = !isCollapsed">{{ x.message | truncate:80 }}</a>
+                </td>
+                <td ng-switch=" x.sources.length > 5 ? (x.sources.length > 10? 'red':'orange'):'grey' ">
+                    <span ng-switch-when="red" class="label-as-badge label label-danger">{{ x.sources.length }}</span>
+                    <span ng-switch-when="orange"
+                          class="label-as-badge label label-warning">{{ x.sources.length }}</span>
+                    <span ng-switch-when="grey"
+                          class="label-as-badge label label-default">{{ x.sources.length }}</span>
+                </td>
+            </tr>
+            <tr collapse="isCollapsed" ng-repeat-end="">
+                <td>
+                    <button class='btn btn-block btn-primary' ng-click="get_bucket_details(x._id)">Details</button>
+                <td colspan="2">
+                    <p>{{x.message}}</p>
+
+                </td>
+                <td>
+                    <div class="row">
+                        <h4>
+                            <a ng-click="go_host(j)" class="post-tag" ng-repeat="j in x.source_names"> {{ j }}</a>
+                        </h4>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,88 @@
+{
+"payload":
+{
+  "max_id": "559847269952958468",
+  "min_id": "559832098555604997",
+  "events": [
+   {
+    "received_at": "2015-07-20T09:59:55-07:00",
+    "program": "janitor-daemon.log",
+    "source_name": "catfood",
+    "severity": "Notice",
+    "hostname": "catfood_cat1",
+    "facility": "User",
+    "source_ip": "52.8.193.220",
+    "source_id": 93129174,
+    "display_received_at": "Jul 20 09:59:55",
+    "message": "2015-07-20 16:59:55,927 - janitor-daemon  - Connection error: ('Connection aborted.', error(101, 'Network is unreachable')), will retry in a bit",
+    "id": 559832098555604997
+   },
+ {
+    "received_at": "2015-07-20T09:59:55-07:00",
+    "program": "janitor-daemon.log",
+    "source_name": "catfood",
+    "severity": "Notice",
+    "hostname": "testfood_cat2",
+    "facility": "User",
+    "source_ip": "52.8.193.220",
+    "source_id": 93129174,
+    "display_received_at": "Jul 20 09:59:55",
+    "message": "2015-07-20 16:59:55,927 - janitor-daemon  - Connection error: ('Connection aborted.', error(101, 'Network is unreachable')), will retry in a bit",
+    "id": 559832098555604997
+   },
+{
+    "received_at": "2015-07-20T09:59:55-07:00",
+    "program": "janitor-daemon.log",
+    "source_name": "catfood",
+    "severity": "Notice",
+    "hostname": "catfood_cat3",
+    "facility": "User",
+    "source_ip": "52.8.193.220",
+    "source_id": 93129174,
+    "display_received_at": "Jul 20 09:59:55",
+    "message": "2015-07-20 16:59:55,927 - janitor-daemon  - Connection error: ('Connection aborted.', error(101, 'Network is unreachable')), will retry in a bit",
+    "id": 559832098555604997
+   },
+ {
+    "received_at": "2015-07-20T09:59:55-07:00",
+    "program": "janitor-daemon.log",
+    "source_name": "catfood",
+    "severity": "Notice",
+    "hostname": "testfood_cat4",
+    "facility": "User",
+    "source_ip": "52.8.193.220",
+    "source_id": 93129174,
+    "display_received_at": "Jul 20 09:59:55",
+    "message": "2015-07-20 16:59:55,927 - janitor-daemon  - Connection error: ('Connection aborted.', error(101, 'Network is unreachable')), will retry in a bit",
+    "id": 559832098555604997
+   },
+{
+    "received_at": "2015-07-20T09:59:55-07:00",
+    "program": "janitor-daemon.log",
+    "source_name": "catfood",
+    "severity": "Notice",
+    "hostname": "catfood_cat5",
+    "facility": "User",
+    "source_ip": "52.8.193.220",
+    "source_id": 93129174,
+    "display_received_at": "Jul 20 09:59:55",
+    "message": "2015-07-20 16:59:55,927 - janitor-daemon  - Connection error: ('Connection aborted.', error(101, 'Network is unreachable')), will retry in a bit",
+    "id": 559832098555604997
+   },
+ {
+    "received_at": "2015-07-20T09:59:55-07:00",
+    "program": "janitor-daemon.log",
+    "source_name": "catfood",
+    "severity": "Notice",
+    "hostname": "testfood_cat6",
+    "facility": "User",
+    "source_ip": "52.8.193.220",
+    "source_id": 93129174,
+    "display_received_at": "Jul 20 09:59:55",
+    "message": "2015-07-20 16:59:55,927 - janitor-daemon  - Connection error: ('Connection aborted.', error(101, 'Network is unreachable')), will retry in a bit",
+    "id": 559832098555604997
+   }
+  ],
+  "meta" : [{"category": "prod"}, {"category": "prod"},{"category": "cat3"}, {"category": "cat4"},{"category": "cat5"}, {"category": "cat6"}]
+}
+}

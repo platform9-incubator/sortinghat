@@ -1,0 +1,52 @@
+<!-- alerts.html -->
+<div >
+
+    <div class="row">
+       <div class="col-xs-4"><h3>Host: {{ host }}</h3></div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="input-group">
+          <span class="input-group-btn">
+              <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></button>
+          </span>
+          <input type="text" class="form-control" ng-model="searchText" placeholder="Search for...">
+        </div><!-- /input-group -->
+      </div><!-- /.col-lg-6 -->
+         <div class="col-xs-6">
+                <label ><input type="radio" ng-model="last_period" ng-value="Date.now()" checked="checked"> all</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="30"> last 30 min</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="60"> last 60 min</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="240"> last 4 hrs</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="480"> last 8 hrs</label>
+                <label ><input type="radio" ng-model="last_period" ng-value="1440"> last 24 hrs</label>
+
+      </div>
+      <div class="col-xs-2">
+        <button  class='btn btn-block btn-primary' ng-click="get_category_data(category)"><span class="glyphicon glyphicon-refresh"></button>
+       </div>
+       </div>
+        <div class="row">
+        <table class="table">
+        <thead>
+        <tr>
+            <th><span class="text">Timestamp</span></th>
+            <th><span class="text">Message</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="log in content | filter:searchText | timeFilter:last_period">
+            <td>{{ log.ts }}</td>
+            <td ng-switch on="log.severity">
+                <span title="Warning" ng-switch-when="WARNING" class="glyphicon glyphicon-exclamation-sign" style="color:orange" aria-hidden="true"></span>
+                <span title="Info" ng-switch-when="INFO" class="glyphicon glyphicon-info-sign" style="color:blue" aria-hidden="true"></span>
+                <span title="Error" ng-switch-when="ERROR" class="glyphicon glyphicon-alert" style="color:red" aria-hidden="true"></span>
+                <span title="Unknown" ng-switch-default class="glyphicon glyphicon-info-sign" style="color:#777" aria-hidden="true"></span>
+                <span>&nbsp;</span>
+                {{ log.message }}
+            </td>
+        </tr>
+        </tbody>
+        </table>
+        </div>
+</div>

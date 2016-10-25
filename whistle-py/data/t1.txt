@@ -1,0 +1,47 @@
+pubmatic nova-conductor.log 2015-07-13 00:11:20.434 18526 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:11:20.434 18526 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:11:20.434 18526 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:11:59.543 18526 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:11:59.543 18526 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:11:59.543 18526 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:12:20.952 18526 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:12:20.952 18526 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:12:20.952 18526 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:12:59.894 18526 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:12:59.894 18526 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:12:59.894 18526 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:13:21.309 18527 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:13:21.309 18527 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:13:21.309 18527 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:14:00.697 18526 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:14:00.697 18526 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:14:00.697 18526 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:14:21.714 18527 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:14:21.714 18527 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:14:21.714 18527 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:15:00.745 18525 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:15:00.745 18525 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:15:00.745 18525 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:15:22.010 18526 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:15:22.010 18526 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:15:22.010 18526 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:16:01.124 18528 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:16:01.124 18528 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:16:01.124 18528 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:16:22.341 18528 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:16:22.341 18528 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:16:22.341 18528 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:17:01.327 18525 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:17:01.327 18525 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:17:01.327 18525 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:17:22.673 18526 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:17:22.673 18526 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:17:22.673 18526 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:18:01.651 18525 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:18:01.651 18525 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:18:01.651 18525 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:18:23.084 18526 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:18:23.084 18526 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)
+pubmatic nova-conductor.log 2015-07-13 00:18:23.084 18526 TRACE oslo_messaging.rpc.dispatcher     reply_code, reply_text, (class_id, method_id), ChannelError,
+pubmatic nova-conductor.log 2015-07-13 00:19:02.058 18527 TRACE oslo_messaging.rpc.dispatcher     error_callback=None)
+pubmatic nova-conductor.log 2015-07-13 00:19:02.058 18527 TRACE oslo_messaging.rpc.dispatcher     self.ensure(_publish, retry=retry, error_callback=error_callback)

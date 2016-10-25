@@ -1,0 +1,49 @@
+table.tableSection {
+    display: table;
+    width: 100%;
+}
+table.tableSection thead, table.tableSection tbody {
+    float: left;
+    width: 100%;
+}
+table.tableSection tbody {
+    overflow: auto;
+    height: 150px;
+}
+table.tableSection tr {
+    width: 100%;
+    display: table;
+    text-align: left;
+}
+table.tableSection th, table.tableSection td {
+    width: 33%;
+}
+
+p.listData {
+
+font-family: 'Helvetica Neue', Arial, sans-serif;
+font-size: 13.12px;
+font-style: normal;
+font-variant: normal;
+}
+
+span.padded {
+     padding-right: 2px;
+     ;
+}
+
+.post-tag {
+  color: #3e6d8e;
+  font-size: 12px;
+  white-space: nowrap;
+  background: #e4edf4;
+  border: 2px solid #e4edf4;
+  display: inline-block;
+  margin: 2px 2px 2px 0;
+  border-radius: 0;
+}
+
+.label-as-badge {
+    border-radius: 1em;
+}
+

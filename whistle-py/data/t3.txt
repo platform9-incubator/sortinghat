@@ -1,0 +1,8 @@
+pubmatic nova-conductor.log 2015-07-13 23:00:06.344 18527 ERROR oslo_messaging._drivers.impl_rabbit [-] Failed to consume message from queue: 
+pubmatic nova-conductor.log 2015-07-13 23:00:06.668 18526 ERROR oslo_messaging._drivers.impl_rabbit [-] Failed to consume message from queue: 
+pubmatic nova-conductor.log 2015-07-13 23:00:06.785 18525 ERROR oslo_messaging._drivers.impl_rabbit [-] Failed to consume message from queue: 
+pubmatic nova-conductor.log 2015-07-13 23:00:07.111 18528 ERROR oslo_messaging._drivers.impl_rabbit [-] Failed to consume message from queue: 
+pubmatic nova-network.log 2015-07-13 23:00:09.863 9635 ERROR oslo_messaging._drivers.impl_rabbit [-] Failed to consume message from queue: 
+pubmatic nova-scheduler.log 2015-07-13 23:00:12.309 9710 ERROR oslo_messaging._drivers.impl_rabbit [-] Failed to consume message from queue: 
+box nova-network.log 2015-07-13 23:01:22.226 14115 ERROR oslo_messaging._drivers.impl_rabbit [-] Failed to consume message from queue: 
+box nova-scheduler.log 2015-07-13 23:01:24.073 14156 ERROR oslo_messaging._drivers.impl_rabbit [-] Failed to consume message from queue: 

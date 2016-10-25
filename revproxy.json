@@ -1,0 +1,25 @@
+{
+  "listen_port": 8080,
+  "proxy": [
+    {
+      "url_regex": ".*.html",
+      "remote_url": "file:///Users/roopak/work/pf9-infra/pf9-omnibus/web/"
+    },
+    {
+      "url_regex": "/.*.js",
+      "remote_url": "file:///Users/roopak/work/pf9-infra/pf9-omnibus/web/"
+    },
+    {
+      "url_regex": "/.*.css",
+      "remote_url": "file:///Users/roopak/work/pf9-infra/pf9-omnibus/web/"
+    },
+    {
+      "url_regex": "/central/ws",
+      "remote_url": "ws://whistle.platform9.horse/ws"
+    },
+    {
+      "url_regex": "/.*",
+      "remote_url": "http://whistle.platform9.horse/"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+<!-- settings.html -->
+<div >
+
+    <div class="row">
+       <div class="col-xs-4"><h3>Settings</h3></div>
+    </div>
+    <div class="row">
+       <div class="col-xs-4"><h4>Settings: Buckets</h4></div>
+    </div>
+    <div class="row">
+	  <div class="col-xs-4">
+	    <p>Rest all the cache and rebuild the 'Buckets', only useful
+		   if you are experimenting with different algorithms
+		</p>
+	  </div>
+      <div class="col-xs-2">
+        <button  class='btn btn-block btn-danger' ng-click="reset_buckets()">Reset Data</button>
+       </div>
+	   <div class="col-xs-4" ng-switch on="reset_status">
+	     <script type="text/ng-template" id="alert.html">
+            <div class="alert" style="background-color:#fa39c3;color:white" role="alert">
+              <div ng-transclude></div>
+            </div>
+         </script>
+           <div ng-show="reset_success">
+		      <alert type="success" close="closeAlert()">Data reset successful.</alert>
+           </div>
+           <div ng-show="reset_failure">
+		      <alert type="danger" close="closeAlert()">Hmm couldn't reset the data ask rparikh</alert>
+           </div>
+	   </div>
+    </div>
+
+    <div class="row">
+       <div class="col-xs-4"><h4>Settings: Mute & Snooze</h4></div>
+    </div>
+    <div class="row">
+           <div ng-show="unmute_success">
+		      <alert type="success" close="closeAlert()">Unmute successful</alert>
+           </div>
+           <div ng-show="unmute_failure">
+		      <alert type="danger" close="closeAlert()">Hmm couldn't umute ask rparikh</alert>
+           </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Error Message</th>
+                        <th>Accounts</th>
+                        <th>Mute-Message</th>
+                        <th>Unmute</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="x in mute_buckets">
+                    <td>
+                        <span class="badge">{{ x.total_count }}</span>
+                    </td>
+                    <td>{{ x[0].message }}</td>
+                    <td>
+                        <div class="row">
+                         <h4>
+                            <a ng-click="go_host(j)" class="post-tag"  ng-repeat="j in x.hostnames"> {{ j }}</a>
+                        </h4>
+                        </div>
+                    </td>
+                    <td>
+                        {{ x.mute_msg }}
+                    </td>
+                    <td>
+                        <button  class='btn btn-block btn-warning' ng-click="unmute_bucket(x._id)">Umute It</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+    </div>
+</div>

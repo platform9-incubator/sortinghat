@@ -2,7 +2,7 @@
 # Python Dockerfile
 
 # Pull base image.
-FROM alpine:3.1
+FROM alpine:latest
 
 # Update certificates
 RUN apk --update upgrade && \
@@ -17,12 +17,10 @@ RUN \
   apk add py-setuptools && \
   mkdir -p /opt/pf9/whistle-log
 
-
-COPY /tmp/whistle-log-wheel/  /opt/pf9/whistle-log
-
+ADD . /opt/pf9/whistle-log
 RUN \
   cd /opt/pf9/whistle-log && \
-  pip  install *.whl
+  python setup.py install
 
 # Define default command.
 CMD ["/opt/pf9/whistle-log/web_server.py"]

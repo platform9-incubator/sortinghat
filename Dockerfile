@@ -10,7 +10,7 @@ RUN apk --update upgrade && \
     update-ca-certificates && \
     rm -rf /var/cache/apk/*
 
-ADD ./bin/main /opt/pf9/whistle-ingest
+ADD ./whistle-log /opt/pf9
 
 # Define default command.
-CMD ["/opt/pf9/whistle-ingest/bin/main"]
+CMD ["/opt/pf9/whistle-log"]

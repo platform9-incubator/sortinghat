@@ -16,7 +16,7 @@ class MongoConnect(object):
         self.db_initDB()
         self.db_initCollection()
 
-    def db_connect(self, server='localhost', port=27017):
+    def db_connect(self, server='mongo', port=27017):
         try:
             self.__client = MongoClient(server, port)
             logger.info('Connected to MongoDB')

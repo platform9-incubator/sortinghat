@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: whistle-log
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: whistle-log
+    spec:
+      imagePullSecrets:
+      - name: rparikhregistrykey
+      containers:
+      - name: whistle-log
+        image: 514845858982.dkr.ecr.us-west-1.amazonaws.com/whistle-log:latest
+        ports:
+        - containerPort: 8080

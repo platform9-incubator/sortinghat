@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
+  name: whistle-ui
+  labels:
+    service: whistle-ui
+spec:
+  clusterIP: None
+  ports:
+    - name: listen
+      port: 80
+      targetPort: 80
+  selector:
+    app: whistle-ui

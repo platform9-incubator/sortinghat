@@ -31,7 +31,7 @@ type BucketDomain struct {
 var bucketManager BucketDomain
 
 func InitDomain() {
-	session, _ := mgo.Dial("localhost:27017")
+	session, _ := mgo.Dial("mongo:27017")
 	bucketManager.buckets = session.DB("pf9_logs").C("pf9_bucket_logs")
 	bucketManager.rawLogs = session.DB("pf9_logs").C("pf9_raw_logs")
 }

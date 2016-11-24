@@ -1,7 +1,6 @@
 package whistle
 
 import (
-	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/gorilla/mux"
@@ -12,7 +11,7 @@ import (
 )
 
 var port int
-var payloadChannel = make(chan PayloadBody, 1024)
+var payloadChannel = make(chan []DataBody, 1024)
 
 func init() {
 	flag.IntVar(&port, "port", 8080, "Listen port for Whistle")
@@ -32,61 +31,7 @@ func StartServer() {
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), router))
 }
 
-type CategoryBody struct {
-	Category string `json:"category"`
-}
-
-type PayloadStruct struct {
-	Events []EventBody `json:"events"`
-}
-
-type EventBody struct {
-	ReceivedAt        string `json:"received_at"`
-	Program           string `json:"program"`
-	SourceName        string `json:"source_name"`
-	Severity          string `json:"severity"`
-	Hostname          string `json:"hostname"`
-	SourceIp          string `json:"source_ip"`
-	DisplayReceivedAt string `json:"display_received_At"`
-	Message           string `json:"message"`
-	Id                int64  `json:"id"`
-	Category          string
-}
-
-type PayloadBody struct {
-	Payload PayloadStruct  `json:"payload"`
-	Meta    []CategoryBody `json:meta`
-}
-
-/**
-Following JSON is an example of the data received from the website
-{
-"payload":
-{
- "max_id": "559847269952958468",
- "min_id": "559832098555604997",
- "events": [
-  {
-   "received_at": "2015-07-20T09:59:55-07:00",
-   "program": "janitor-daemon.log",
-   "source_name": "catfood",
-   "severity": "Notice",
-   "hostname": "catfood_cat1",
-   "facility": "User",
-   "source_ip": "52.8.193.220",
-   "source_id": 93129174,
-   "display_received_at": "Jul 20 09:59:55",
-   "message": "2015-07-20 16:59:55,927 - janitor-daemon  - Connection error: ('Connection aborted.', error(101, 'Network is unreachable')), will retry in a bit",
-   "id": 559832098555604997
-  }
- ],
- "meta" : [{"category": "cat1"}, {"category": "cat2"}]
-}
-}
-*/
 func Ingest(w http.ResponseWriter, r *http.Request) {
-	var dataBody PayloadBody
-	Info.Println("Received request")
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		panic(err)
@@ -94,32 +39,20 @@ func Ingest(w http.ResponseWriter, r *http.Request) {
 	if err := r.Body.Close(); err != nil {
 		panic(err)
 	}
-
-	if err := json.Unmarshal(body, &dataBody); err != nil {
-		fmt.Println("Error Unmarshaling ", err, body)
-	}
-	// Preprocessing
-	for idx, _ := range dataBody.Payload.Events {
-		if idx < len(dataBody.Meta) {
-			dataBody.Payload.Events[idx].Category = dataBody.Meta[idx].Category
-		} else {
-			dataBody.Payload.Events[idx].Category = ""
-		}
-	}
-
+        dataBody := ParseSumologic(body)
 	payloadChannel <- dataBody
 	w.WriteHeader(http.StatusOK)
 }
 
-func ingestMessage(chanPayloadBody chan PayloadBody) {
+func ingestMessage(chanPayloadBody chan []DataBody) {
 	buckets := GetAllBuckets()
 	var newBucket *Bucket
 	for {
 		payloadBody := <-chanPayloadBody
-		for _, event := range payloadBody.Payload.Events {
+		for _, event := range payloadBody {
 			foundMatch, rawLog := ParseMessage(event.Message)
 			if foundMatch {
-				rawLog.SourceName = event.SourceName
+				rawLog.SourceName = event.Host
 				rawLog.Category = event.Category
 				buckets, rawLog, newBucket = Bucketize(buckets, rawLog)
 				rawLog.Id = bson.NewObjectId()
@@ -129,7 +62,7 @@ func ingestMessage(chanPayloadBody chan PayloadBody) {
 					UpsertBucket(newBucket)
 				}
 			} else {
-				Error.Println("Can't parse Message, %s \r\n", event.Message)
+				Error.Println("Can't parse Message, %s \r\n", event)
 			}
 		}
 	}

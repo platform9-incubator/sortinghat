@@ -1,0 +1,84 @@
+{
+  "data": [
+    {
+      "Message": "2016-11-23 23:26:25.197 16893 ERROR oslo.messaging._drivers.impl_rabbit [req-f1b416e1-f788-48e4-bd6a-7e6334cc727c - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943585197,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-consoleauth.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    },
+    {
+      "Message": "2016-11-23 23:26:24.865 16830 ERROR oslo.messaging._drivers.impl_rabbit [req-0c7eafb5-aa0e-4b5d-8c6d-5362c8f07021 - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943584865,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-scheduler.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    },
+    {
+      "Message": "2016-11-23 23:26:24.245 16765 ERROR oslo.messaging._drivers.impl_rabbit [req-35fd0ae1-84fe-4d16-9eb8-bfc477f685f8 - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943584245,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-network.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    },
+    {
+      "Message": "2016-11-23 23:26:22.193 16704 ERROR oslo.messaging._drivers.impl_rabbit [req-1611d719-e538-440a-8092-96695bef7839 - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943582193,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-conductor.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    },
+    {
+      "Message": "2016-11-23 23:26:02.169 16893 ERROR oslo.messaging._drivers.impl_rabbit [req-f1b416e1-f788-48e4-bd6a-7e6334cc727c - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943562169,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-consoleauth.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    },
+    {
+      "Message": "2016-11-23 23:26:01.834 16830 ERROR oslo.messaging._drivers.impl_rabbit [req-0c7eafb5-aa0e-4b5d-8c6d-5362c8f07021 - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943561834,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-scheduler.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    },
+    {
+      "Message": "2016-11-23 23:26:01.214 16765 ERROR oslo.messaging._drivers.impl_rabbit [req-35fd0ae1-84fe-4d16-9eb8-bfc477f685f8 - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943561214,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-network.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    },
+    {
+      "Message": "2016-11-23 23:25:59.153 16704 ERROR oslo.messaging._drivers.impl_rabbit [req-1611d719-e538-440a-8092-96695bef7839 - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943559153,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-conductor.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    },
+    {
+      "Message": "2016-11-23 23:25:41.104 16893 ERROR oslo.messaging._drivers.impl_rabbit [req-f1b416e1-f788-48e4-bd6a-7e6334cc727c - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943541104,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-consoleauth.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    },
+    {
+      "Message": "2016-11-23 23:25:40.761 16830 ERROR oslo.messaging._drivers.impl_rabbit [req-0c7eafb5-aa0e-4b5d-8c6d-5362c8f07021 - - - - -] AMQP server 127.0.0.1:5672 closed the connection. Check login credentials: Socket closed",
+      "Time": 1479943540761,
+      "Host": "pf9-sm-lab-vmwest1.platform9.net",
+      "Category": "prod/openstack/nova",
+      "Name": "/var/log/nova/nova-scheduler.log",
+      "Collector": "pf9-sm-lab-vmwest1.platform9.net"
+    }
+  ]
+}

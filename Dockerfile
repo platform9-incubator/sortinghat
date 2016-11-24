@@ -1,8 +1,8 @@
 #
 # Python Dockerfile
 
-# Pull base image.
-FROM alpine:latest
+# Pull base image.\
+FROM blang/golang-alpine:latest
 
 # Update certificates
 RUN apk --update upgrade && \
@@ -10,7 +10,8 @@ RUN apk --update upgrade && \
     update-ca-certificates && \
     rm -rf /var/cache/apk/*
 
-ADD ./whistle-log /opt/pf9
+RUN mkdir -p /opt/pf9
+ADD ./whistle-log /opt/pf9/
 
 # Define default command.
 CMD ["/opt/pf9/whistle-log"]

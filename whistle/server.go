@@ -25,10 +25,14 @@ func StartServer() {
 	go ingestMessage(payloadChannel)
 
 	router := mux.NewRouter().StrictSlash(true)
+	router.HandleFunc("/", DefaultPage)
 	router.HandleFunc("/data", Ingest)
 	router.HandleFunc("/data/recompute", RecomputeBuckets)
 	fmt.Println("Listening on  %d", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), router))
+}
+func DefaultPage(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusOK)
 }
 
 func Ingest(w http.ResponseWriter, r *http.Request) {

@@ -28,7 +28,7 @@
             <div class="modal-footer">
                 <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
                 <button class="btn btn-primary" type="button" ng-click="mute()">Mute Accounts</button>
-                <button class="btn btn-primary" type="button" ng-click="bucket_mute()">Mute Bucket</button>
+                <button class="btn btn-primary" type="button" ng-click="mute_bucket()">Mute Bucket</button>
             </div>
         </script>
     </div> <!-- End Mute Modal Dialog -->
@@ -96,6 +96,17 @@
         </h4>
         </div>
    </div>
+
+   <div class="row">
+        <div class="well">
+            <input type="textbox"
+                   value="{{ bucket_data.bucket[0].user_message }}">
+
+            <button class="btn btn-primary" type="button" ng-click="save_user_message()">Save</button>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="well">
         {{ bucket_data.bucket[0].canonical_message }}

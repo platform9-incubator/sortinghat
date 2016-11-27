@@ -3,6 +3,7 @@ package whistle
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 )
 
 
@@ -32,7 +33,11 @@ type SumologicBody struct {
 func ParseSumologic(body []byte)  []DataBody {
 	var dataBody SumologicBody
 	Info.Println("Received request")
-	if err := json.Unmarshal(body, &dataBody); err != nil {
+	var data string
+	data = strings.Replace(string(body), "\\\"", "\"", -1)
+	data = strings.Replace(data, "\\/", "/", -1)
+	data = strings.Replace(data, "\\\\", "\\", -1)
+	if err := json.Unmarshal([]byte(data), &dataBody); err != nil {
 		fmt.Println("Error Unmarshaling ", err, body)
 	}
 

@@ -7,6 +7,9 @@ from log_handler import logging
 from token_match import token_ratio
 from datetime import datetime
 import time, threading
+###
+###This file is deprecated and it is not used anymore
+###
 
 logger = logging.getLogger(__name__)
 skip_words = ['DEBUG']

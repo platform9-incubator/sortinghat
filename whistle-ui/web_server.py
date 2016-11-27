@@ -4,7 +4,7 @@ from flask import Flask,redirect, abort, request, jsonify
 import json
 from alerts import start_alerting
 from fuzzy_match import start_processing, start_scrubber
-from bucket_log_reports import get_result, get_host_result, get_category_result
+from bucket_log_reports import get_result, get_host_result, get_category_result, update_bucket_message
 from bucket_log_reports import get_bucket_info, reset_buckets_mutes, get_bucket_details
 from mute import get_mute_settings, mute_bucket, remove_mute_bucket, mute_account_bucket, remove_mute_account_bucket
 from datacollector import data_sink
@@ -25,7 +25,7 @@ app.debug = True
 
 @app.route('/')
 def incoming():
-    return redirect("/static/index.html", code=302)
+    return redirect("/whistle-ui/static/index.html", code=302)
 
 @app.route('/data', methods=['POST'])
 def ingest():
@@ -78,6 +78,9 @@ def get_bucket(bucket_id):
 def get_bucket_summary(bucket_id):
     return dumps(get_bucket_info(loads(bucket_id)))
 
+@app.route('/bucket/<bucket_id>/<msg>', method=['POST'])
+def add_message(bucket_id, msg):
+    return dumps(update_bucket_message(loads(bucket_id), msg))
 
 @app.route('/settings/mute', methods=['GET'])
 def mute_settings():

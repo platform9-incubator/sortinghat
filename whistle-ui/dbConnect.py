@@ -220,6 +220,12 @@ class LogsMongoConnect(MongoConnect):
                     'message': {
                         '$first': '$message'
                     },
+                    'canonical_message': {
+                        '$first': '$canonical_message'
+                    },
+                    'user_message' : {
+                        '$first': '$user_message'
+                    },
                     'timestamp': {
                         '$max': '$timestamp'
                     },
@@ -247,6 +253,12 @@ class LogsMongoConnect(MongoConnect):
                     },
                     'message': {
                         '$first': '$message'
+                    },
+                    'canonical_message': {
+                        '$first': 'canonical_message'
+                    },
+                    'user_message': {
+                        '$first': '$user_message'
                     },
                     'timestamp': {
                         '$max': '$timestamp'

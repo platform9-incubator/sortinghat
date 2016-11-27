@@ -1,7 +1,7 @@
 // This is whistle
 
 var app = angular.module('whistleApp', ['igTruncate','ui.bootstrap', 'ngRoute', 'timeFilters']);
-
+var base_path = "/whistle-ui"
 app.config(function($routeProvider){
     $routeProvider
          // for the host page
@@ -58,13 +58,18 @@ app.controller('MainController', function($scope, $http, $interval, $location, $
 
 
     $scope.get_category_data = function(category){
-        url = "/category/"+category;
+        url = base_path+"/category/"+category;
         if (category == "all") {
-             url = "/alerts";
+             url = base_path+"/alerts";
         }
         // This is ugly and needs to be fixed in the backend
         // why are there two APIs for all vs categories
         $http.get(url).success(function(response) {
+            response.forEach(function(element){
+                if (element.user_message == 'Undefined' ) {
+                    element.user_message = element.canonical_message;
+                }
+            });
             $scope.cat_records = response;
             window.scrollTo(0, 0);
         });
@@ -79,7 +84,7 @@ app.controller('MainController', function($scope, $http, $interval, $location, $
 
 app.controller('HostController', function($scope, $http, $interval, $routeParams) {
     $scope.get_host_data = function(host){
-                                $http.get("/host/"+host).success(function(response) {
+                                $http.get(base_path+"/host/"+host).success(function(response) {
                                                 $scope.content = response;
                                                 window.scrollTo(0, 0);
                                 });
@@ -117,24 +122,32 @@ app.controller('BucketController', function($scope, $http, $interval, $routePara
 
     $scope.showFullMessage = "false";
     $scope.get_bucket_data = function(bucketId) {
-        $http.get("/bucket/details/"+bucketId).success(function(response){
+        $http.get(base_path+"/bucket/details/"+bucketId).success(function(response){
             $scope.bucket_data = response;
             var record = $scope.bucket_data.bucket;
          });
     };
 
     $scope.mute_bucket = function(bucket_id, msg) {
-        $http.post('/mute/'+bucket_id+"/"+msg).then(function(response) {
+        $http.post(base_path+'/mute/'+bucket_id+"/"+msg).then(function(response) {
             $scope.mute_success = true;
         }, function(response) {
             $scope.mute_failure = true;
         });
     };
 
+    $scope.save_user_message = function() {
+        $http.post(base_path+'/bucket/'+$scope.bucket_id+"/"+$scope.bucket_data.bucket[0].user_message).then(function(response) {
+            $scope.mute_success = true;
+        }, function(response) {
+            $scope.mute_failure = true;
+        });
+    }
+
 
     $scope.account_mute_bucket = function(bucket_id, accounts, msg) {
         data = {'accounts':accounts, 'msg': msg};
-        $http.post('/mute-account-bucket/'+bucket_id, data).then(function(response) {
+        $http.post(base_path+'/mute-account-bucket/'+bucket_id, data).then(function(response) {
             $scope.mute_success = true;
         }, function(response) {
             $scope.mute_failure = true;
@@ -177,7 +190,7 @@ app.controller('SettingsController', function($scope, $http) {
 	$scope.reset_alert = {type:'hidden'};
     $scope.mute_buckets  = [];
     $scope.reset_buckets = function() {
-        $http.post('/alerts').then(function(response) {
+        $http.post(base_path+'/alerts').then(function(response) {
             $scope.reset_success = true;
         }, function(response) {
             $scope.reset_failure = true;
@@ -185,10 +198,10 @@ app.controller('SettingsController', function($scope, $http) {
     };
     
 	$scope.get_mute_buckets = function() {
-	    $http.get('/settings/mute').success(function(response){
+	    $http.get(base_path+'/settings/mute').success(function(response){
 	        mute_settings = response;
 	        for (var i = 0; i < mute_settings.length; i++) {
-	            var url = '/bucket/summary/'+ JSON.stringify(mute_settings[i].bucket_id);
+	            var url = base_path+'/bucket/summary/'+ JSON.stringify(mute_settings[i].bucket_id);
 	            var msg = mute_settings[i].msg;
 	            temp_func = function(msg) {
 	                return function(response){
@@ -204,7 +217,7 @@ app.controller('SettingsController', function($scope, $http) {
 	};
 
 	$scope.unmute_bucket = function(bucket_id) {
-        $http.post('/unmute/'+JSON.stringify(bucket_id)).then(function(response) {
+        $http.post(base_path+'/unmute/'+JSON.stringify(bucket_id)).then(function(response) {
             $scope.umute_success = true;
         }, function(response) {
             $scope.umute_failure = true;

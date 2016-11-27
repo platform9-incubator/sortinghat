@@ -37,6 +37,11 @@ def reset_buckets_mutes():
     recompute()
     return get_result()
 
+def update_bucket_message(bucket_id, msg):
+    logger.info("Adding Bucket info")
+    bucket = {'_id': bucket_id, 'user_msg': msg}
+    return bucket_db.update_bucket(bucket)
+
 def get_bucket_info(bucket_id):
     logger.info("get bucket info")
     return bucket_db.get_bucket(bucket_id)

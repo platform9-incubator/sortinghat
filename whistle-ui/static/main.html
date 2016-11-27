@@ -1,4 +1,5 @@
 <!-- home.html -->
+<!-- home.html -->
 <div>
     <div class="row">
         <div class="col-xs-4"><h3>Category: {{ category }}</h3></div>
@@ -59,7 +60,7 @@
                     <span title="Unknown" ng-switch-default class="glyphicon glyphicon-info-sign" style="color:#777"
                           aria-hidden="true"></span>
                     <span>&nbsp;</span>
-                    <a ng-click="isCollapsed = !isCollapsed">{{ x.message | truncate:80 }}</a>
+                    <a ng-click="isCollapsed = !isCollapsed">{{ x.user_message | truncate:80 }}</a>
                 </td>
                 <td ng-switch=" x.sources.length > 5 ? (x.sources.length > 10? 'red':'orange'):'grey' ">
                     <span ng-switch-when="red" class="label-as-badge label label-danger">{{ x.sources.length }}</span>

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+aws ecr get-login --region us-west-1 | sh -
 cat > /tmp/image-pull-secret.yaml << EOF
 apiVersion: v1
 kind: Secret

@@ -100,9 +100,10 @@ class BucketMongoConnect(MongoConnect):
         return [ either category updated or new category added ]
         '''
         try:
-            query = {'message': data['message']}
             if data.has_key('_id'):
                 query = {'_id': data['_id']}
+            else:
+                query = {'message': data['message']}
             doc = self._bucket_collection.find_one_and_update(query,
                                                          {"$set":data},
                                                          projection={'_id': True},

@@ -78,7 +78,7 @@ def get_bucket(bucket_id):
 def get_bucket_summary(bucket_id):
     return dumps(get_bucket_info(loads(bucket_id)))
 
-@app.route('/bucket/<bucket_id>/<msg>', method=['POST'])
+@app.route('/bucket/<bucket_id>/<msg>', methods=['POST'])
 def add_message(bucket_id, msg):
     return dumps(update_bucket_message(loads(bucket_id), msg))
 

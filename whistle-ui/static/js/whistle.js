@@ -68,6 +68,9 @@ app.controller('MainController', function($scope, $http, $interval, $location, $
             response.forEach(function(element){
                 if (element.user_message == 'Undefined' ) {
                     element.user_message = element.canonical_message;
+                    if (element.user_message == 'Undefined') {
+                        element.user_message = element.message;
+                    }
                 }
             });
             $scope.cat_records = response;
@@ -137,7 +140,7 @@ app.controller('BucketController', function($scope, $http, $interval, $routePara
     };
 
     $scope.save_user_message = function() {
-        $http.post(base_path+'/bucket/'+$scope.bucket_id+"/"+$scope.bucket_data.bucket[0].user_message).then(function(response) {
+        $http.post(base_path+'/bucket/'+$scope.bucketId+"/"+$scope.bucket_data.bucket[0].user_message).then(function(response) {
             $scope.mute_success = true;
         }, function(response) {
             $scope.mute_failure = true;

@@ -21,7 +21,27 @@ def get_result(category=None):
     logger.info("Called get result")
     mute_buckets = mute_db.db_get_mute_settings()
     mute_account_buckets = mute_db.db_get_all_account_mute()
-    return logs_db.get_all_bucket_aggregate_info(category, mute_buckets, mute_account_buckets, None, None)
+    aggregate_result = logs_db.get_all_bucket_aggregate_info(category, mute_buckets, mute_account_buckets, None, None)
+    buckets_arr = bucket_db.get_all_buckets()
+    bucket_dict = {}
+    for bucket in buckets_arr:
+        canonical_message = bucket['message']
+        user_message = bucket['message']
+        if 'canonical_message' in bucket:
+           canonical_message = bucket['canonical_message']
+        if 'user_message' in bucket:
+           user_message = bucket['user_message']
+        bucket_dict[bucket['_id']] = {'canonical_message': canonical_message, 'user_message': user_message}
+
+    # Add 'user_message' or 'canonical_message' to the aggregate information.
+    for r in aggregate_result:
+        if 'canonical_message' in bucket_dict[r['_id']]:
+            r['canonical_message'] = bucket_dict[r['_id']]['canonical_message']
+        if 'user_message' in bucket_dict[r['_id']]:
+            r['user_message'] = bucket_dict[r['_id']]['user_message']
+
+    return aggregate_result
+
 
 # Get host specific results
 def get_host_result(hostname):
@@ -39,7 +59,7 @@ def reset_buckets_mutes():
 
 def update_bucket_message(bucket_id, msg):
     logger.info("Adding Bucket info")
-    bucket = {'_id': bucket_id, 'user_msg': msg}
+    bucket = {'_id': bucket_id, 'user_messagex': msg}
     return bucket_db.update_bucket(bucket)
 
 def get_bucket_info(bucket_id):

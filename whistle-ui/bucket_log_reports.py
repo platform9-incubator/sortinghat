@@ -34,13 +34,15 @@ def get_result(category=None):
         bucket_dict[bucket['_id']] = {'canonical_message': canonical_message, 'user_message': user_message}
 
     # Add 'user_message' or 'canonical_message' to the aggregate information.
+    result = []
     for r in aggregate_result:
         if 'canonical_message' in bucket_dict[r['_id']]:
             r['canonical_message'] = bucket_dict[r['_id']]['canonical_message']
         if 'user_message' in bucket_dict[r['_id']]:
             r['user_message'] = bucket_dict[r['_id']]['user_message']
+        result.append(r)
 
-    return aggregate_result
+    return result
 
 
 # Get host specific results
@@ -59,7 +61,7 @@ def reset_buckets_mutes():
 
 def update_bucket_message(bucket_id, msg):
     logger.info("Adding Bucket info")
-    bucket = {'_id': bucket_id, 'user_messagex': msg}
+    bucket = {'_id': bucket_id, 'user_message': msg}
     return bucket_db.update_bucket(bucket)
 
 def get_bucket_info(bucket_id):

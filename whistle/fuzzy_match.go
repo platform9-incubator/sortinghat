@@ -116,7 +116,7 @@ func DoTheyFuzzyMatch(key string, message string) (bool, []string, string) {
 		fuzz_ratio = MAX_FUZZ_RATIO
 	} else if 15 > max_len && max_len > 4 {
 
-		fuzz_ratio = int(float32(max_len)*1.7) + MIN_FUZZ_RATIO
+		fuzz_ratio = int(float32(15-max_len)*1.2) + MIN_FUZZ_RATIO
 	}
 
 	trimmedSubstTokens := make([]string, 0, len(substTokens))

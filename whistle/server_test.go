@@ -8,7 +8,7 @@ import (
 //	"strconv"
 //	"strings"
 //	"strconv"
-	"strings"
+//	"strings"
 )
 
 func TestJsonParsing(t *testing.T) {
@@ -66,25 +66,7 @@ func testParse2(t *testing.T) {
 		fmt.Println("Error reading file")
 		t.Errorf("Error reading file")
 	}
-	var dataBody SumologicBody
-        var data string
-	data = strings.Replace(string(file), "\\\"", "\"", -1)
-	data = strings.Replace(data, "\\/", "/", -1)
-	data = strings.Replace(data, "\\\\", "\\", -1)
+	dataBody := ParseSumologic(file)
 
-	//fmt.Println("Data:", data)
-
-	//data = strings.Map(parseNext, string(file))
-	//data, err = strconv.Unquote(string(file))
-	if err != nil {
-		fmt.Println("Error unquoting string ", err)
-	}
-	fmt.Println("Data: "+ data)
-	if err = json.Unmarshal([]byte(data), &dataBody); err != nil {
-		fmt.Println("Marshalled failed", err)
-	} else {
-		fmt.Println("Marshalled  ", dataBody)
-	}
-
-	fmt.Println("Event Legnth", len(dataBody.Data))
+	fmt.Println("Event Length", len(dataBody))
 }

@@ -24,15 +24,49 @@ Following JSON is an example of the data received from the website
 */
 
 
-
 type SumologicBody struct {
-	Data    []DataBody `json:data`
+	Data []DataBody `json:data`
 }
 
+func coalesceStackTraces(sumologicBody SumologicBody) []DataBody {
+	// host2log is a map of
+	// hostname : { log_name: [timestamp, index-of-the-last-Data object in databody]}
+	type TimeIdx struct {
+		time int
+		idx  int
+	}
+	var host2log map[string]map[string]TimeIdx
+	host2log = make(map[string]map[string]TimeIdx)
 
-func ParseSumologic(body []byte)  []DataBody {
+	var ret = make([]DataBody, len(sumologicBody.Data))
+	fmt.Println("Number of incoming event", len(sumologicBody.Data))
+	index := 0
+	for _, data := range sumologicBody.Data {
+		if _, hostExists := host2log[data.Host] ; hostExists {
+			if tidx, logExists := host2log[data.Host][data.Name] ; logExists {
+				if (tidx.time == data.Time) {
+					ret[tidx.idx].Message = fmt.Sprintf("%s\n%s", ret[tidx.idx].Message, data.Message)
+					continue
+				}
+			}
+		} else {
+			host2log[data.Host] = map[string]TimeIdx {}
+		}
+		ret[index] = data
+		var tidx TimeIdx
+		tidx.idx = index
+		tidx.time = data.Time
+		host2log[data.Host][data.Name] = tidx
+		index = index + 1
+	}
+	fmt.Println("Number of coalesced events", index)
+	return ret[0:index]
+}
+
+func ParseSumologic(body []byte) []DataBody {
+
 	var dataBody SumologicBody
-	Info.Println("Received request")
+	//Info.Println("Received request")
 	var data string
 	data = strings.Replace(string(body), "\\\"", "\"", -1)
 	data = strings.Replace(data, "\\/", "/", -1)
@@ -41,6 +75,6 @@ func ParseSumologic(body []byte)  []DataBody {
 		fmt.Println("Error Unmarshaling ", err, body)
 	}
 
-	return dataBody.Data;
+	return coalesceStackTraces(dataBody);
 }
 

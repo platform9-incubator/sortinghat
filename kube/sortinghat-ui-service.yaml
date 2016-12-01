@@ -3,9 +3,9 @@ kind: Service
 metadata:
   annotations:
     service.alpha.kubernetes.io/tolerate-unready-endpoints: "true"
-  name: whistle-ui
+  name: sortinghat-ui
   labels:
-    service: whistle-ui
+    service: sortinghat-ui
 spec:
   clusterIP: None
   ports:
@@ -13,4 +13,4 @@ spec:
       port: 80
       targetPort: 80
   selector:
-    app: whistle-ui
+    app: sortinghat-ui

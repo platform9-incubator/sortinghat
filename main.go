@@ -5,5 +5,5 @@ import (
 )
 
 func main(){
-	whistle.StartServer()
+	logingest.StartServer()
 }

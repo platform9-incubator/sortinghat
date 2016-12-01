@@ -3,7 +3,6 @@ package logingest
 import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-	"bitbucket.org/platform9/sortinghat/vendor/gopkg.in/mgo.v2"
 )
 
 type Bucket struct {

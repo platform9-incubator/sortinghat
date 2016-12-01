@@ -25,7 +25,7 @@ app.debug = True
 
 @app.route('/')
 def incoming():
-    return redirect("/whistle-ui/static/index.html", code=302)
+    return redirect("/sortinghat-ui/static/index.html", code=302)
 
 @app.route('/data', methods=['POST'])
 def ingest():

@@ -1,14 +1,21 @@
-Whistle-Log
 
-Whistle-Log is an application that is useful for analyzing OpenStack (and generally any log).
+Sorting Hat
 
-It contains a web application and corresponding analysis web-service.
+Sorting Hat is an application which turns logs into useful alerts. It is primarily designed
+to be used for analyzing OpenStack-logs.
 
-The Web-Service ingest ERROR logs from any source, finds correlation between various ERROR logs
-and lets user annotate what is important and not important.
+It helps users by categorizing similarly looking logs into 'buckets' and let the user:
+- Annotate which buckets are interesting and which ones are not
+- Annotate the bucket with a  user friendly message
 
-This is a very powerful tool that can be customized for any log analysis. Currently it works with 
-PaperTrail, but can be easily ported to consume data from any log aggreation service.
+The above two features provide a way to fingerprint and publish 'Error definition' (Pending)
+that can be consumed by other users of the same product.
 
-It uses Mongo database as the backend to store and analyze log statements.
+The architecture is very simple pipeline
 
+
+LogAggregation Service -- filter by keywords (like ERROR) --> SortingHat-logingest (parse and sort into buckets) --> Monog DB
+
+SortingHat UI --> SortingHat UI backend --> Mongo DB
+
+For more information please contact rparikh@platform9.com

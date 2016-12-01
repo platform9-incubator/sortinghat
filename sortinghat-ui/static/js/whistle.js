@@ -1,7 +1,7 @@
 // This is whistle
 
 var app = angular.module('whistleApp', ['igTruncate','ui.bootstrap', 'ngRoute', 'timeFilters']);
-var base_path = "/whistle-ui"
+var base_path = "/sortinghat-ui"
 app.config(function($routeProvider){
     $routeProvider
          // for the host page

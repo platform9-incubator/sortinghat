@@ -1,5 +1,4 @@
-package whistle
-
+package logingest
 import (
 	"bufio"
 	"os"

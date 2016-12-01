@@ -1,4 +1,4 @@
-package whistle
+package logingest
 
 import (
 	"flag"

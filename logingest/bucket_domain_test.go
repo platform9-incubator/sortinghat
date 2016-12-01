@@ -1,5 +1,4 @@
-package whistle
-
+package logingest
 import (
 	"fmt"
 	"gopkg.in/mgo.v2/bson"

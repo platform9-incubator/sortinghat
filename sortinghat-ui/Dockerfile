@@ -15,18 +15,18 @@ RUN \
   apk update && \
   apk add python py-pip && \
   apk add py-setuptools && \
-  mkdir -p /opt/pf9/whistle-log/whistle-py/logs
+  mkdir -p /opt/pf9/sortinghat-ui/logs
 
 # Install gunicorn
 RUN apk --update add py-gunicorn
 
-ADD . /opt/pf9/whistle-log/whistle-py
+ADD . /opt/pf9/sortinghat-ui
 RUN \
-  cd /opt/pf9/whistle-log/whistle-py && \
+  cd /opt/pf9/sortinghat-ui && \
   python setup.py install
 
-COPY run.sh /opt/pf9/whistle-log/whistle-py
-WORKDIR /opt/pf9/whistle-log/whistle-py
+COPY run.sh /opt/pf9/sortinghat-ui
+WORKDIR /opt/pf9/sortinghat-ui
 
 # Define default command.
-CMD ["/opt/pf9/whistle-log/whistle-py/run.sh"]
+CMD ["/opt/pf9/sortinghat-ui/run.sh"]

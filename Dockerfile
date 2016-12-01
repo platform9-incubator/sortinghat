@@ -11,7 +11,7 @@ RUN apk --update upgrade && \
     rm -rf /var/cache/apk/*
 
 RUN mkdir -p /opt/pf9
-ADD ./whistle-log /opt/pf9/
+ADD ./sortinghat /opt/pf9/
 
 # Define default command.
-CMD ["/opt/pf9/whistle-log"]
+CMD ["/opt/pf9/sortinghat"]

@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: whistle-log
+  name: sortinghat-ui
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: whistle-log
+        app: sortinghat-ui
     spec:
       imagePullSecrets:
       - name: rparikhregistrykey
       containers:
-      - name: whistle-log
-        image: 514845858982.dkr.ecr.us-west-1.amazonaws.com/whistle-log:latest
+      - name: sortinghat-ui
+        image: 514845858982.dkr.ecr.us-west-1.amazonaws.com/sortinghat-ui:latest
         ports:
-        - containerPort: 8080
+        - containerPort: 80

@@ -1,5 +1,4 @@
-package whistle
-
+package logingest
 import "testing"
 
 func TestBucketize(t *testing.T) {

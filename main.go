@@ -1,6 +1,8 @@
 package main
 
-import "bitbucket.org/platform9/whistle-log/whistle"
+import (
+	"bitbucket.org/platform9/sortinghat/logingest"
+)
 
 func main(){
 	whistle.StartServer()

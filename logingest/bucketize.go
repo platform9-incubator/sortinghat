@@ -1,5 +1,4 @@
-package whistle
-
+package logingest
 import "gopkg.in/mgo.v2/bson"
 
 func Bucketize(buckets []Bucket, rawLog *RawLog) ([]Bucket, *RawLog, *Bucket) {

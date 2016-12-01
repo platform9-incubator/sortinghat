@@ -1,5 +1,4 @@
-package whistle
-
+package logingest
 type DataBody struct {
 	Message           string `json:"Message"`
 	Host              string `json:"Host"`

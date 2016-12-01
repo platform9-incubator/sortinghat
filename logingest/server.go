@@ -54,7 +54,6 @@ func ingestMessage(chanPayloadBody chan []DataBody) {
 	for {
 		payloadBody := <-chanPayloadBody
 		for _, event := range payloadBody {
-			Error.Println("Parsing message:", event.Message)
 			foundMatch, rawLog := ParseMessage(event.Message)
 			if foundMatch {
 				rawLog.SourceName = event.Host

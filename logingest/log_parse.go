@@ -42,8 +42,8 @@ func Init() {
 	var buf bytes.Buffer
 	logger = log.New(&buf, "logger: ", log.Lshortfile)
 	var patterns = []string{
-		`(?P<DATE_TIME>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[,.](?P<MILLISECONDS>\d{3}) ([0-9]*) (?P<LOG_LEVEL>INFO|TRACE|ERROR|WARNING) (?P<MESSAGE>.*)`,
-		`(?P<DATE_TIME>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[,.](?P<MILLISECONDS>\d{3}) (?P<LOG_LEVEL>INFO|TRACE|ERROR|WARNING) (?P<MESSAGE>.*)`,
+		`(?P<DATE_TIME>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[,.](?P<MILLISECONDS>\d{3}) ([0-9]*) (?P<LOG_LEVEL>INFO|TRACE|ERROR|WARNING) (?P<LOG_NAME>\S+) (?P<MESSAGE>.*)`,
+		`(?P<DATE_TIME>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[,.](?P<MILLISECONDS>\d{3}) (?P<LOG_LEVEL>INFO|TRACE|ERROR|WARNING) (?P<LOG_NAME>\S+) (?P<MESSAGE>.*)`,
 		`(?P<DATE_TIME>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}).(?P<MICROSECONDS>\d{6})(?P<LOG_LEVEL>) (?P<MESSAGE>.*)`,
 		`(?P<DATE_TIME>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})[,.](?P<MILLISECONDS>\d{3}) - (?P<PROG>.*) - (?P<LOG_LEVEL>INFO|TRACE|ERROR|WARNING) (?P<MESSAGE>.*)`,
 		`(?P<DATE_TIME>\d{4}/\d{2}/\d{2} \d{2}:\d{2}:\d{2}) (?P<MESSAGE>.*)`,                         // 2016/01/04 05:19:53 [error] 19920#0: *423945 connect()
@@ -79,7 +79,7 @@ func matchGroups(matcher regexp.Regexp, data string) (map[string]string, error) 
 	return result, nil
 }
 
-func parseParts(regExp regexp.Regexp, data string) (string, int64, string, string, error) {
+func parseParts(regExp regexp.Regexp, data string) (string, int64, string, string, string, error) {
 
 	matchResult, err := matchGroups(regExp, data)
 	if matchResult != nil {
@@ -92,6 +92,11 @@ func parseParts(regExp regexp.Regexp, data string) (string, int64, string, strin
 			microseconds = strconv.FormatInt(int64(1000*milliseconds), 10)
 		} else {
 			microseconds = matchResult["MICROSECONDS"]
+		}
+
+		logName, ok := matchResult["LOG_NAME"]
+		if ! ok {
+			logName = ""
 		}
 
 		dateTimeLayouts := []string{
@@ -111,12 +116,12 @@ func parseParts(regExp regexp.Regexp, data string) (string, int64, string, strin
 			microSec = timeObj.UnixNano() / 1000
 			timeStr = timeObj.Format("2006-01-02 15:04:05.000000")
 		}
-		return logLevel, microSec, timeStr, matchResult["MESSAGE"], err
+		return logLevel, microSec, timeStr, logName, matchResult["MESSAGE"], err
 	} else {
 		timeObj := time.Now()
 		microSec := timeObj.UnixNano() / 1000
 		timeStr := timeObj.Format("2006-01-02 15:04:05.000000")
-		return "INFO", microSec, timeStr, "", err
+		return "INFO", microSec, timeStr, "", "", err
 	}
 }
 
@@ -124,9 +129,8 @@ func ParseMessage(data string) (bool, *RawLog) {
 	var rawLog RawLog
 	foundMatch := false
 	for _, matcher := range messageRegexes {
-		logLevel, microsec, timeStr, message, err := parseParts(matcher, data)
-
-		if err != nil {
+		logLevel, microsec, timeStr, _, message, err := parseParts(matcher, data)
+                if err != nil {
 			continue
 		}
 		rawLog.Severity = logLevel

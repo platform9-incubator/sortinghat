@@ -9,6 +9,7 @@ type Bucket struct {
 	Id               bson.ObjectId `bson:"_id"`
 	Message          string        `bson:"message"`
 	CanonicalMessage string        `bson:"canonical_message"`
+	UserMessage      string        `bson:"user_message"`
 }
 
 type RawLog struct {

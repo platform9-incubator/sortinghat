@@ -29,6 +29,7 @@ def get_result(category=None):
         user_message = bucket['message']
         if 'canonical_message' in bucket:
            canonical_message = bucket['canonical_message']
+           user_message = canonical_message
         if 'user_message' in bucket:
            user_message = bucket['user_message']
         bucket_dict[bucket['_id']] = {'canonical_message': canonical_message, 'user_message': user_message}

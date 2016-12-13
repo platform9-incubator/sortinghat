@@ -1,6 +1,6 @@
 // This is whistle
 
-var app = angular.module('whistleApp', ['igTruncate','ui.bootstrap', 'ngRoute', 'timeFilters']);
+var app = angular.module('whistleApp', ['igTruncate','ui.bootstrap', 'ngRoute', 'timeFilters', 'highlight']);
 var base_path = "/sortinghat-ui"
 app.config(function($routeProvider){
     $routeProvider
@@ -65,14 +65,6 @@ app.controller('MainController', function($scope, $http, $interval, $location, $
         // This is ugly and needs to be fixed in the backend
         // why are there two APIs for all vs categories
         $http.get(url).success(function(response) {
-            response.forEach(function(element){
-                if (element.user_message == 'Undefined' ) {
-                    element.user_message = element.canonical_message;
-                    if (element.user_message == 'Undefined') {
-                        element.user_message = element.message;
-                    }
-                }
-            });
             $scope.cat_records = response;
             window.scrollTo(0, 0);
         });

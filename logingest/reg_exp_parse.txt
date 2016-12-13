@@ -1,0 +1,2 @@
+2016-12-13 02:30:31.995 18447 ERROR oslo_messaging.rpc.dispatcher     ctxt, self, fn.__name__, args, kwargs)
+2016-12-13 02:30:31.609 ERROR oslo.messaging._drivers.impl_rabbit [req-901ad994-9960-4e74-ae98-abebbf277ff8 None None] AMQP server on __nova_controller_host__:5673 is unreachable: [Errno -2] Name or service not known. Trying again in 32 seconds.

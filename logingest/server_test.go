@@ -12,12 +12,12 @@ import (
 )
 
 func TestJsonParsing(t *testing.T) {
-	//testParse1(t)
+	testParse1(t)
 	testParse2(t)
 }
 
 func testParse1(t *testing.T) {
-	file, err := ioutil.ReadFile("/Users/roopak/work/pf9-infra/whistle/src/whistle/papertrail_parse.txt")
+	file, err := ioutil.ReadFile("./papertrail_parse.txt")
 	if err != nil {
 		fmt.Println("Error reading file")
 	}
@@ -61,7 +61,7 @@ func parseNext(r rune) rune {
 }
 */
 func testParse2(t *testing.T) {
-	file, err := ioutil.ReadFile("/Users/roopak/work/src/bitbucket.org/platform9/whistle-log/whistle/sumologic_parse4.txt")
+	file, err := ioutil.ReadFile("./sumologic_parse4.txt")
 	if err != nil {
 		fmt.Println("Error reading file")
 		t.Errorf("Error reading file")

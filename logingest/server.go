@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 var port int
@@ -56,6 +57,9 @@ func ingestMessage(chanPayloadBody chan []DataBody) {
 		for _, event := range payloadBody {
 			foundMatch, rawLog := ParseMessage(event.Message)
 			if foundMatch {
+				if len(strings.TrimSpace(rawLog.Message)) <= 0 {
+					continue
+				}
 				rawLog.SourceName = event.Host
 				rawLog.Category = event.Category
 				buckets, rawLog, newBucket = Bucketize(buckets, rawLog)

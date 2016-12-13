@@ -11,8 +11,7 @@ func TestRegExpParsing(t *testing.T) {
 	InitLog()
 	Init()
 	basicRegExTest(t)
-	parseFile(t, "/Users/roopak/work/pf9-infra/whistle/src/whistle/reg_exp_parse.txt")
-	parseFile(t, "/Users/roopak/work/pf9-infra/misc/fuzzy-match/regex-test.txt")
+	parseFile(t, "./reg_exp_parse.txt")
 }
 
 func basicRegExTest(t *testing.T) {
@@ -38,18 +37,23 @@ func basicRegExTest(t *testing.T) {
 }
 
 func parseFile(t *testing.T, path string) {
-	inFile, _ := os.Open(path)
+	inFile, err := os.Open(path)
+	if err != nil {
+		t.Log("Failed to open file ", path)
+		t.Fail()
+	}
 	defer inFile.Close()
 	scanner := bufio.NewScanner(inFile)
 	scanner.Split(bufio.ScanLines)
 
 	for scanner.Scan() {
 		text := scanner.Text()
-		foundMatch, _ := ParseMessage(text)
+		foundMatch, rawLog := ParseMessage(text)
 		if !foundMatch {
 			t.Log("Failed to Parse: ", text)
 			t.Fail()
 		}
-
+                t.Log(rawLog.MessageTokens)
+		t.Log(rawLog.Message)
 	}
 }

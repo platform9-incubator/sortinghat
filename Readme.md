@@ -1,5 +1,6 @@
 
 # Sorting Hat
+![Sorting Hat] (https://github.com/platform9-incubator/sortinghat/blob/master/sortinghat-ui/static/sortinghat.png?raw=true)
 
 Sorting Hat is an application which turns logs into useful alerts. It does so by categorizing logs statements into different buckets. Kind of like fingerprinting a log statement.
 

@@ -1,2 +1,2 @@
-ClientID:***REMOVED***.apps.googleusercontent.com
-client-secret:***REMOVED***
+ClientID:279501311918-2ruu91b7jn8iihc18jh6n2tir615r3i2.apps.googleusercontent.com
+client-secret:LfSRohqllNnelYKbqO1MSUqR
